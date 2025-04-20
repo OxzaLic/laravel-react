@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import '../../css/tictactoe.css';
 
-function Square({ value, onSquareClick }) {
+function Square({ value, onSquareClick } : any) {
     return (
         <button className="square" onClick={onSquareClick}>
             {value}
@@ -10,8 +10,8 @@ function Square({ value, onSquareClick }) {
     );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
-    function handleClick(i) {
+function Board({ xIsNext, squares, onPlay } : any) {
+    function handleClick(i  : any ) {
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -60,13 +60,13 @@ export default function Tictactoe() {
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
-    function handlePlay(nextSquares) {
+    function handlePlay(nextSquares : any) { 
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
     }
 
-    function jumpTo(nextMove) {
+    function jumpTo(nextMove : any) {
         setCurrentMove(nextMove);
     }
 
@@ -96,7 +96,7 @@ export default function Tictactoe() {
     );
 }
 
-function calculateWinner(squares) {
+function calculateWinner(squares : any) {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
