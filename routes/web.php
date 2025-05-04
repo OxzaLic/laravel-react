@@ -27,9 +27,9 @@ Route::get('/tictactoe', function () {
 Route::get('/fruit', function () {
     return Inertia::render('Fruit');
 })->name('fruit');
- 
 
-/*unit_02*/ 
+
+/*unit_02*/
 Route::get('/hello-teacher', function () {
     return Inertia::render('HelloTeacher');
 })->name('hello-teacher');
@@ -45,3 +45,33 @@ Route::get('/home-page', function () {
 Route::get('/bootstrap', function () {
     return Inertia::render('BootstrapContent');
 })->name('bootstrap');
+
+
+/*Unit_3 */
+Route::get('/circle', function () {
+    return Inertia::render('Circle');
+})->name('circle');
+
+Route::get('/counter', function () {
+    return Inertia::render('Counter');
+})->name('counter');
+
+Route::get('/form-example', function () {
+    return Inertia::render('FormExample');
+})->name('form-example');
+
+Route::get('/list-manager', function () {
+    return Inertia::render('ListManager');
+})->name('list-manager');
+
+Route::get('/infinite-scroll', function () {
+    return Inertia::render('InfiniteScrollExample');
+})->name('infinite-scroll');
+
+Route::get('/todolist', function () {
+    return Inertia::render('ToDoList');
+})->name('todolist');
+
+Route::get('/todolist02', function () {
+    return Inertia::render('ToDoList02');
+})->name('todolist');
