@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Food;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -75,3 +77,42 @@ Route::get('/todolist', function () {
 Route::get('/todolist02', function () {
     return Inertia::render('ToDoList02');
 })->name('todolist');
+
+
+
+Route::get('/product', function () {
+    $products = Product::all();
+    return Inertia::render('ProductList', compact('products'));
+})->name('product');
+
+
+/* API */
+Route::get('/product-others', function () {
+    return Inertia::render('ProductOthers');
+})->name('product-others');
+
+
+
+Route::get('/foods', function () {
+    $foods = Food::all();
+    return Inertia::render('FoodList', ['foods' => $foods]);
+});
+Route::get('/foods', function () {
+    return Inertia::render('FoodList');
+});
+
+
+
+Route::get('/product-manager', function () {
+    $p = Product::all();
+    return Inertia::render('ProductManager', compact('p'));
+})->name('product-manager');
+
+Route::get('/product/create', function () {
+    return Inertia::render('ProductForm');
+})->name('product.create');
+
+Route::get('/product/{id}/edit', function ($id) {
+    $product = Product::findOrFail($id);
+    return Inertia::render('ProductForm', compact('product'));
+})->name('product.edit');
