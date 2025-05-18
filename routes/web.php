@@ -91,18 +91,6 @@ Route::get('/product-others', function () {
     return Inertia::render('ProductOthers');
 })->name('product-others');
 
-
-
-Route::get('/foods', function () {
-    $foods = Food::all();
-    return Inertia::render('FoodList', ['foods' => $foods]);
-});
-Route::get('/foods', function () {
-    return Inertia::render('FoodList');
-});
-
-
-
 Route::get('/product-manager', function () {
     $p = Product::all();
     return Inertia::render('ProductManager', compact('p'));
@@ -116,3 +104,21 @@ Route::get('/product/{id}/edit', function ($id) {
     $product = Product::findOrFail($id);
     return Inertia::render('ProductForm', compact('product'));
 })->name('product.edit');
+
+
+
+/**ฏDB+Api */
+Route::get('/foods', function () {
+    return Inertia::render('FoodList'); // React component: FoodList.tsx
+})->name('foods.index');
+
+// หน้าเพิ่มอาหาร (ใช้ component เดียวกัน)
+Route::get('/foods/create', function () {
+    return Inertia::render('FoodList');
+})->name('foods.create');
+
+// หน้าแก้ไขอาหาร
+Route::get('/foods/{id}/edit', function ($id) {
+    $food = Food::findOrFail($id);
+    return Inertia::render('FoodList', ['food' => $food]);
+})->name('foods.edit');

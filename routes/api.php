@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FoodController;
 use App\Http\Controllers\Api\ProductController;
 use App\Models\Food;
 use App\Models\Product;
@@ -20,8 +21,10 @@ Route::apiResource('/product', ProductController::class);
 
 
 
-
+/**DB+Api */
 Route::get('/food', function () {
     $foods = Food::all(); // Fetch all products
     return response()->json($foods); // Return as JSON
 });
+
+Route::apiResource('food', FoodController::class);
